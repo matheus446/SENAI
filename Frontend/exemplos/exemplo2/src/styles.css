@@ -1,0 +1,26 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+body{
+    background-color: #8a2be2;
+}
+
+@media (max-width: 60px) {
+    body{
+        background-color:#00ffff;
+    }
+}
+/* Aplicar apenas se a tela estiver entre 601px E 1024px */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+.vitrine-grid {
+grid-template-columns: 1fr 1fr; /* Muda para 2 colunas no Tablet */
+}
+}
+
+/* Aplica se a tela for menor que 600px OU se estiver em pé */
+@media (max-width: 600px), (orientation: portrait) {
+.vitrine-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="src/styles.css">
+    <title>TechFood - Cardápio Digital</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">TechFood</div>
+        <button class="search-icon" aria-label="Buscar no cardápio">🔍</button>
+        <button class="cart-icon" aria-label="Ver carrinho de compras">🛒</button>
+    </header>
+
+    <section class="banner-hero">
+        <h1>Sabor & Saber</h1>
+        <p>A melhor gastronomia tecnológica da região.</p>
+    </section>
+
+    <main class="menu-container">
+        <div class="abas-lista" role="tablist">
+            <input type="radio" name="categoria" id="massa" checked>
+            <label for="massa" role="tab" aria-controls="tela-massas">Massas</label>
+
+            <input type="radio" name="categoria" id="bebida">
+            <label for="bebida" role="tab">Bebidas</label>
+
+            <input type="radio" name="categoria" id="doce">
+            <label for="doce" role="tab">Doces</label>
+        </div>
+
+        <section class="aba-tela" id="tela-massas" role="tabpanel">
+            <div class="grid-produtos">
+                <article class="card">
+                    <img src="src/imagens/Lasanha_tradicional.jpg" alt="Lasanha tradicional com molho bolonhesa e quatro queijos">
+                    <h3>Lasanha Tradicional</h3>
+                    <p>Massa artesanal ao molho bolonhesa com 4 queijos.</p>
+                    <span class="preco">R$ 45,90</span>
+                    <button class="btn-pedir">Pedir</button>
+                </article>
+
+                <article class="card">
+                    <img src="src/imagens/ravioli-de-queijo.jpg" alt="Ravioli de espinafre recheado com ricota e nozes">
+                    <h3>Ravioli de Espinafre</h3>
+                    <p>Recheado com ricota fresca e nozes picadas.</p>
+                    <span class="preco">R$ 39,00</span>
+                    <button class="btn-pedir">Pedir</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>Siga-nos:</p>
+        <a href="#" aria-label="Facebook da TechFood">FB</a>
+        <a href="#" aria-label="Instagram da TechFood">IG</a>
+    </footer>
+</body>
+</html>
