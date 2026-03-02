@@ -6,14 +6,14 @@ import { View, Text, StyleSheet } from "react-native";
 
 export default function Exemplo03() {
     const logado = false;
-    consttemNotificacoes = false;
+    const temNotificacoes = false;
 
   return (
     <View style={styles.container}>
       <View style={styles.exemplo}>
       <Text style={styles.titulo}>Condicionais</Text>
       <Text style={styles.subtitulo}>Ternário</Text>
-      <Text>Status: {Logado ? "Logado" : "Deslogado"}</Text>
+      <Text>Status: {logado ? "Logado" : "Deslogado"}</Text>
     </View>
 
     <View style={styles.exemplo}>

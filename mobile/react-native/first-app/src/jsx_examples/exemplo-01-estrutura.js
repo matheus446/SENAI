@@ -7,8 +7,8 @@ import { View, Text, StyleSheet } from "react-native";
 export default function Exemplo01() {
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Estrutura Padrão</Text>
-      <Text style={styles.subtitulo}>Padrão com</Text>
+      <Text style={styles.titulo}>Olá</Text>
+      <Text style={styles.subtitulo}>Mundo</Text>
       <Text style={styles.exemplo}>Olá SENAI</Text>
     </View>
   );
