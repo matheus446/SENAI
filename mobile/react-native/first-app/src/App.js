@@ -7,11 +7,12 @@ import Exemplo04 from './jsx_examples/exemplo-04-listas';
 import Lista01 from './jsx_examples/lista-01';
 import Lista02 from './jsx_examples/lista-02';
 import Lista03 from './jsx_examples/lista-03';
+import ViewExemplo from './basic_components/view_exemples01';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Lista02/>  
+      <ViewExemplo/>  
     </View>
   );
 }

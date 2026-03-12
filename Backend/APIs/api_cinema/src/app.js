@@ -62,7 +62,7 @@ app.get('/filmes', async (req,res) => {
     }
 })
 
-app.get('/filmes/:id', (req,res) => {
+app.get('/filmes/:id', async (req,res) => {
     // const {id} = req.params
 
     // pool.query('SELECT * FROM filme WHERE id = ?', [id],(err, results) =>{
@@ -75,9 +75,10 @@ app.get('/filmes/:id', (req,res) => {
         if(!id || isNaN(id)){
             return res.status(400).json({
                 sucesso: false,
-                mensagem: 'ID de filme invádido'.
+                mensagem: 'ID de filme invádido'
             })
         }
+    
 
         const filme = await queryAsync('SELECT * FROM filme WHERE id = ?', [id])
 

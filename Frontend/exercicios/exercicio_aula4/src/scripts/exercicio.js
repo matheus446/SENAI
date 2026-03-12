@@ -54,6 +54,7 @@ if (numeroUsuario === numeroSorteado) {
 class Veiculo {
     constructor(modelo, marca, ano) {
         this.modelo = modelo;
+        
         this.marca = marca;
         this.ano = ano;
     }
