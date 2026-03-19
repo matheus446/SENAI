@@ -17,7 +17,7 @@ app.get('/', (req,res) => {
     res.send("API CINEMA")
 })
 
-/* ================= FILMES ================= */
+/*FILMES*/
 
 app.get('/filmes', async (req,res) => {
     try {
@@ -103,7 +103,7 @@ app.delete('/filmes/:id', async (req,res) =>{
     }
 })
 
-/* ================= SALAS ================= */
+/*SALAS*/
 
 app.get('/salas', async (req,res) => {
     try {
