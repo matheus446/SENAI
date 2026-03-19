@@ -1,151 +1,161 @@
+/* --- ESTILO GERAL (DESKTOP / TELAS GRANDES) --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-#topo-loja{
-    background-color: #8a2be2;
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
+#topo-loja {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-#bt_menu, #label-menu{
-    display: nome;
+/* MENU HAMBURGUER: Esconde o checkbox e o label no Desktop */
+#bt_menu, #label-menu {
+  display: none;
 }
 
-#menu ul{
-    list-style: none;
-    margin-top: 10px;
+#menu ul {
+  list-style: none;
+  margin-top: 10px;
 }
 
-#menu li{
-    display: inline-block;
-    margin: 0 10px;
+#menu li {
+  display: inline-block;
+  margin: 0 10px;
 }
 
-#menu a{
-    color: #7fff00;
-    text-decoration: none;
-    font-weight: bold;
+#menu a {
+  color: #f1c40f;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.titulo-secao{
-    text-align: center;
-    margin-top: 40px;
-    color: #d2691e;
+.titulo-secao {
+  text-align: center;
+  margin-top: 40px;
+  color: #2c3e50;
 }
 
-
-.vitrine-grid{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-    padding: 20px;
+/*ESTRUTURA INICIAL EM GRID (3 COLUNAS NO PC) */
+.vitrine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
-
-.card{
-    border: 1px solid;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
+  width: 100%;       /* Garante que a imagem ocupe toda a largura do card */
+  height: 350px;     /* Define uma altura fixa para TODOS os cards ficarem iguais */
+  object-fit: cover; /* MÁGICA: Corta a imagem levemente para preencher o espaço sem distorcer */
+  border-radius: 5px;
+  display: block;    /* Remove espaços vazios indesejados abaixo da imagem */
+  margin-bottom: 15px;
 }
 
-.preco{
-    display: block;
-    color: #00ff1e;
-    font-weight: bold;
-    margin: 10px 0;
+.preco {
+  display: block;
+  color: #e67e22;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
-.bt_pedido{
-    background: #8a2be2;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
+.btn-pedido {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
 }
 
-#rodape{
-    background-color: aqua;
-    color: rgb(0, 0, 0);
-    padding: 30px;
-    margin-top: 40px;
-    text-align: center;
-}
-
-/* MEDIAS */
-
-@media screen{
-    #topo-loja h1{
-        letter-spacing: 2px;
-    }
-}
-
-@media (max-width: 480px){
-    h1{
-        font-size: 1.2rem;
-    }
+#rodape {
+  background: #2c3e50;
+  color: white;
+  padding: 30px;
+  margin-top: 40px;
+  text-align: center;
 }
 
 
+@media screen {
+  #topo-loja h1 {
+    letter-spacing: 2px;
+  }
+}
 
-/* tela tablet */
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/*ESTRUTURA TABLET*/
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
-    .vitrine-grid{
-        grid-template-columns: repeat(2,1fr);
-    }
+  .vitrine-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-/* celulalas */
+/*ESTRUTURA CELULAR (OU TABLET NO MODO RETRATO)*/
 
-@media screen and (max-width:600px), (orientation: portrait){
-    /*menu/hamburger/responsivo/retratil*/
-    #label-menu {
+@media screen and (max-width: 600px), (orientation: portrait) {
+  
+  #label-menu {
     display: block;
     font-size: 2.5rem;
-    color: #2f4f4f;
+    color: #f1c40f;
     cursor: pointer;
     margin-top: 10px;
-    }
+  }
 
-    #bt_menu:checked ~ #menu ul{
-        display: block;
-        padding: 10px 0;
-    }
+  #menu ul {
+    display: none;
+  }
 
-    .vitrine-grid{
-        grid-template-columns: 1fr;
-    }
+  #bt_menu:checked ~ #menu ul {
+    display: block;
+    padding: 10px 0;
+  }
 
-    .desc{
-        display: none;
-    }
+  .vitrine-grid {
+    grid-template-columns: 1fr; /* Empilha em 1 coluna */
+  }
 
-    #menu li{
-        display: block;
-        margin: 15px 0;
-        border-bottom: 1px solid #9acd32;
-        padding-bottom: 10px;
-    }
+  .desc {
+    display: none; /* UX: Esconde texto longo no mobile para economizar espaço */
+  }
 
-
+  #menu li {
+    display: block;
+    margin: 15px 0;
+    border-bottom: 1px solid #34495e;
+    padding-bottom: 10px;
+  }
+}
+@media not screen {
+  #menu, .btn-pedido, #label-menu, #bt_menu {
+    display: none;
+  }
 }
 
-@media not screen{
-    #menu, .bt_pedido, #label-menu, #bt_menu{
-        display: none;
-    }
+/* --- NOVO: AULA 5 - CLASSE DE MANIPULAÇÃO --- */
+/* Esta classe será "injetada" pelo JavaScript via classList */
+.em-promocao {
+    border: 3px solid #f1c40f !important;
+    background-color: #fcf3cf;
+    transform: scale(1.05); /* Dá um leve zoom no card */
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
 }
-

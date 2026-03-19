@@ -1,4 +1,3 @@
-
 // --- SELEÇÃO DE ELEMENTOS (Seu código base) ---
 
 // Busca o elemento único pelo ID. O DOM entrega o objeto completo da tag <header>.

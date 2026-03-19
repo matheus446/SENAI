@@ -1,18 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Exemplo01 from './jsx_examples/exemplo-01-estrutura';
-import Exemplo02 from './jsx_examples/exemplo-02-expressoes';
-import Exemplo03 from './jsx_examples/exemplo-03-condicionais';
-import Exemplo04 from './jsx_examples/exemplo-04-listas';
-import Lista01 from './jsx_examples/lista-01';
-import Lista02 from './jsx_examples/lista-02';
-import Lista03 from './jsx_examples/lista-03';
-import ViewExemplo from './basic_components/view_exemples01';
+import { StyleSheet, View } from 'react-native';
+import ExercicioView06 from './jsx_examples/exercicios_FlexBox_ViewComponent/exercicio06.js';
+import ExercicioView07 from './jsx_examples/exercicios_FlexBox_ViewComponent/exercicio07.js';
+import ExercicioView08 from './jsx_examples/exercicios_FlexBox_ViewComponent/exercicio08.js';
+import ExercicioView09 from './jsx_examples/exercicios_FlexBox_ViewComponent/exercicio09.js';
+import ExercicioView10 from './jsx_examples/exercicios_FlexBox_ViewComponent/exercicio10.js';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ViewExemplo/>  
+    <View style={{ flex: 1 }}>
+      <ExercicioView10/>
     </View>
   );
 }
@@ -20,8 +17,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#ffffff'
   },
 });
