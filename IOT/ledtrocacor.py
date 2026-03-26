@@ -21,3 +21,6 @@ while True:
    
     print(f"{porcentagem}%")
     sleep(0.5)
+
+
+
