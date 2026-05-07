@@ -1,0 +1,40 @@
+import {useState} from 'react'
+import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
+
+export default function Recados() {
+ 
+  const [texto, setTexto] = useState('')
+  const [recadoEnviado, setRecadoEnviado] = useState('')
+  function handleEnviar() {
+    setRecadoEnviado(texto)
+    setTexto('')
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}> Recados</Text>
+
+      
+      <TextInput
+        style={styles.input}
+        placeholder="Digite sua mensagem..."
+        value={texto}
+        onChangeText={texto => setTexto(texto)}
+      />
+
+     
+      <TouchableOpacity style={styles.botao} onPress={handleEnviar}>
+        <Text style={styles.botaoTexto}>Enviar</Text>
+      </TouchableOpacity>
+
+      
+      {recadoEnviado !== '' && (
+        <View style={styles.resultado}>
+          <Text style={styles.label}>Recado enviado:</Text>
+          <Text style={styles.recado}>{recadoEnviado}</Text>
+        </View>
+      )}
+
+    </View>
+  )
+}

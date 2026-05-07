@@ -131,6 +131,7 @@ app.put('/produtos/:id', async (req, res) => {
             })
         }
 
+        
         const atualizado = {}
 
         if (nome !== undefined) atualizado.nome = nome.trim()

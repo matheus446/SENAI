@@ -180,8 +180,14 @@
 }
 
 @keyframes entrar {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Botão ✕ para remover item individual (criado com createElement) */
@@ -243,6 +249,18 @@
 
   #bt_menu:checked ~ #menu ul {
     display: block;
+    padding: 8px 0;
+  }
+
+  #menu li {
+    display: block;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  #menu li:last-child {
+    border-bottom: none;
   }
 
   .vitrine-grid {
@@ -252,4 +270,101 @@
   .btn-pedido {
     padding: 15px;
   }
+}
+
+/* =============================================================
+   AULA 7 → AULA 8
+   Adicionar estes estilos no final do style.css existente.
+   ============================================================= */
+
+/* ── Quantidade moderna — Aula 7 ─────────────────────────────
+   Substituiu o <input type="number"> por botões + e -.
+   ─────────────────────────────────────────────────────────── */
+.quantidade-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.btn-qtd {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--cor-destaque, #e67e22);
+  background: none;
+  color: var(--cor-destaque, #e67e22);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.btn-qtd:hover {
+  background: var(--cor-destaque, #e67e22);
+  color: #fff;
+}
+
+.qtd-valor {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--cor-primaria, #2c3e50);
+  min-width: 24px;
+  text-align: center;
+}
+
+/* ── Badge no card — Aula 7 → Aula 8 ────────────────────────
+   Inserido via insertAdjacentHTML quando o pedido é salvo.
+   Some após 2s — libera o card para novo pedido do mesmo prato.
+   ─────────────────────────────────────────────────────────── */
+.badge-adicionado {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  background: #27ae60;
+  color: #fff;
+  font-size: 0.75rem;
+  border-radius: 20px;
+  font-weight: 500;
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ── Destaque no link "Meus Pedidos" do menu — Aula 8 ────────
+   Ativado por atualizarContadorPedidos() após cada pedido salvo.
+   O link já existe no HTML — só ganha a classe e o badge.
+   ─────────────────────────────────────────────────────────── */
+a.menu-ativo {
+  color: #f1c40f !important;
+  font-weight: bold;
+}
+
+.badge-menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #e67e22;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  margin-left: 5px;
+  vertical-align: middle;
 }

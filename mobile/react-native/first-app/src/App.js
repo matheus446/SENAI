@@ -1,23 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import ExercicioView10 from './jsx_examples/exercicios_FlexBox_ViewComponent/exercicio10';
-import ExercicioView12 from './jsx_examples/somativa01/exercicio01somativa';
-import ExercicioView13 from './jsx_examples/somativa01/exercicio02somativa';
+// ============================================
+// AULA:
+// ============================================
+// SCAFFOLD - Arquivo base para a aula
+// Os alunos recebem este arquivo ANTES da aula
+// ============================================
 
-
-
+import { View, Text, StyleSheet } from "react-native";
+import FlatListExemplo from "./jsx_examples/exemplos/formularios_listas/flatList/flatList";
 
 export default function App() {
   return (
-    <View style={{ flex: 1 }}>
-      <ExercicioView13/>
+    <View style={styles.container}>
+      <FlatListExemplo/>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff'
-  },
-});
