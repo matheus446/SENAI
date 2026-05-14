@@ -166,7 +166,7 @@ function inicializarVitrine() {
       }, 1500);
 
       // Badge no card — Aula 7 → Aula 8
-      // Mostra "✔ Pedido salvo" e some após 2s, liberando o card
+      // Mostra "✔ Pedido salvo" e some após 2s, liberando x'o card
       // para um novo pedido do mesmo prato sem confundir o cliente.
       // Se já existe um badge (pedido anterior ainda visível),
       // remove antes de criar um novo — evita duplicatas.
