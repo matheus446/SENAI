@@ -6,12 +6,14 @@
 // ============================================
 
 import { View, Text, StyleSheet } from "react-native";
-import FlatListExemplo from "./jsx_examples/exemplos/formularios_listas/flatList/flatList";
+import { NavigationContainer } from "@react-navigation/native";
+import DrawerNavigator from "./jsx_examples/navigation/exemplos/drawar_navigator";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <FlatListExemplo/>
-    </View>
+    <NavigationContainer>
+        <DrawerNavigator />
+      </NavigationContainer>
+  
   );
 }

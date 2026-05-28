@@ -111,6 +111,7 @@ function renderizarPedidos() {
     spanContador.textContent =
       totalItens + (totalItens === 1 ? " item" : " itens");
   }
+  
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

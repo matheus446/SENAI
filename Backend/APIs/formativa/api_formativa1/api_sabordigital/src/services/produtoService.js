@@ -1,4 +1,4 @@
-const ProdutoRepository = require("../repositories/produtoRepository/");
+const ProdutoRepository = require("../repositories/produtoRepository");
 
 class ProdutoService {
   async listarProdutos() {
@@ -13,17 +13,21 @@ class ProdutoService {
 
   async buscarProdutoPorId(id) {
     if (!id || isNaN(id)) {
-      throw { status: 400, mensagem: "ID inválido" };
+      throw {
+        status: 400,
+        mensagem: "ID inválido",
+      };
     }
 
     const produto = await ProdutoRepository.buscarProdutoPorId(id);
 
-    if (!produto) {
+    if (!produto || produto.length === 0) {
       throw {
         status: 404,
-        mensagem: "produto não encontrado",
+        mensagem: "Produto não encontrado",
       };
     }
+
     return {
       sucesso: true,
       dados: produto[0],
@@ -31,36 +35,44 @@ class ProdutoService {
   }
 
   async cadastrarProduto(dados) {
-    const { nome, descricao, preco, categoria, disponivel } = dados;
+    const { nome, descricao, preco, categoria, disponivel, imagem } = dados;
 
-    if (!nome || !descricaon || preco === undefined) {
+    if (!nome || !descricao || preco === undefined) {
       throw {
         status: 400,
-        mensagem: "Nome, descricão e preço são obrigatórios",
+        mensagem: "Nome, descrição e preço são obrigatórios",
       };
     }
 
-    if (typeof preco !== "number" || preco <= 0) {
+    if (isNaN(preco) || Number(preco) <= 0) {
       throw {
         status: 400,
-        mensagem: "preço deve ser um número positivo",
+        mensagem: "Preço deve ser um número positivo",
       };
     }
 
     const novoProduto = {
       nome: nome.trim(),
+
       descricao: descricao.trim(),
-      preco,
+
+      preco: Number(preco),
+
       categoria: categoria || null,
-      disponivel: disponivel || true,
+
+      disponivel: disponivel !== undefined ? disponivel : true,
+
+      imagem: imagem || null,
     };
 
     const resultado = await ProdutoRepository.cadastrarProduto(novoProduto);
 
     return {
       sucesso: true,
+
       mensagem: "Produto cadastrado com sucesso!",
-      resultado,
+
+      id: resultado,
     };
   }
 
@@ -68,13 +80,13 @@ class ProdutoService {
     if (!id || isNaN(id)) {
       throw {
         status: 400,
-        mensagem: "Id inválido",
+        mensagem: "ID inválido",
       };
     }
 
-    const produtoId = await ProdutoRepository.buscarProdutoPorId(id);
+    const produtoExistente = await ProdutoRepository.buscarProdutoPorId(id);
 
-    if (!produtoId) {
+    if (!produtoExistente || produtoExistente.length === 0) {
       throw {
         status: 404,
         mensagem: "Produto não encontrado",
@@ -83,32 +95,43 @@ class ProdutoService {
 
     const produtoAtualizado = {};
 
-    const { nome, descricao, preco, categoria, disponivel } = dados;
+    const { nome, descricao, preco, categoria, disponivel, imagem } = dados;
 
-    if (nome !== undefined || nome.trim() !== "")
+    if (nome !== undefined && nome.trim() !== "") {
       produtoAtualizado.nome = nome.trim();
+    }
 
-    if (descricao !== undefined) produtoAtualizado.descricao = descricao.trim();
+    if (descricao !== undefined) {
+      produtoAtualizado.descricao = descricao.trim();
+    }
 
     if (preco !== undefined) {
-      if (typeof preco !== "number" || preco <= 0) {
+      if (isNaN(preco) || Number(preco) <= 0) {
         throw {
           status: 400,
           mensagem: "Preço deve ser um número positivo",
         };
       }
 
-      produtoAtualizado.preco = preco;
+      produtoAtualizado.preco = Number(preco);
     }
 
-    if (categoria !== undefined) produtoAtualizado.categoria = categoria;
+    if (categoria !== undefined) {
+      produtoAtualizado.categoria = categoria;
+    }
 
-    if (disponivel !== undefined) produtoAtualizado.disponivel = disponivel;
+    if (disponivel !== undefined) {
+      produtoAtualizado.disponivel = disponivel;
+    }
+
+    if (imagem !== undefined) {
+      produtoAtualizado.imagem = imagem;
+    }
 
     if (Object.keys(produtoAtualizado).length === 0) {
       throw {
         status: 400,
-        mensagem: "Nenhum dado válido enviado para a atualização",
+        mensagem: "Nenhum dado válido enviado",
       };
     }
 
@@ -116,34 +139,36 @@ class ProdutoService {
 
     return {
       sucesso: true,
-      mensagem: "Produto atualizado!",
+
+      mensagem: "Produto atualizado com sucesso!",
     };
   }
 
-  async deletarProduto(id){
-    if(!id || isNaN(id)){
-      throw{
+  async deletarProduto(id) {
+    if (!id || isNaN(id)) {
+      throw {
         status: 400,
-        mensagem: 'Id inválido'
-      }
+        mensagem: "ID inválido",
+      };
     }
 
-    const idProduto = await ProdutoRepository.buscarProdutoPorId(id)
+    const produto = await ProdutoRepository.buscarProdutoPorId(id);
 
-    if(idProduto){
-      throw{
+    if (!produto || produto.length === 0) {
+      throw {
         status: 404,
-        mensagem: 'Produto não encontrado'
-      }
+        mensagem: "Produto não encontrado",
+      };
     }
 
-    await ProdutoRepository.apagarProduto(id)
+    await ProdutoRepository.apagarProduto(id);
 
-    return{
+    return {
       sucesso: true,
-      mensagem: 'Produto apagado'
-    }
+
+      mensagem: "Produto apagado com sucesso!",
+    };
   }
 }
 
-module.exports = new ProdutoService()
+module.exports = new ProdutoService();

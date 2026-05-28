@@ -28,17 +28,23 @@ class ProdutoController {
   }
 
   async cadastrarProduto(req, res) {
-    try {
-      const resultado = await produtoService.cadastrarProduto(req.body);
-      res.json(resultado);
-    } catch (erro) {
-      res.status(erro.status || 500).json({
-        sucesso: false,
-        mensagem: erro.mensagem || "Erro interno no servidor",
-        erro: erro.stack || erro,
-      });
-    }
+  try {
+
+    const dadosProduto = {...req.body,imagem: req.file ? req.file.filename : null};
+
+    const resultado = await produtoService.cadastrarProduto(dadosProduto);
+
+    res.json(resultado);
+
+  } catch (erro) {
+
+    res.status(erro.status || 500).json({
+      sucesso: false,
+      mensagem: erro.mensagem || "Erro interno no servidor",
+      erro: erro.stack || erro,
+    });
   }
+}
 
   async atualizarProduto(req, res) {
     try {

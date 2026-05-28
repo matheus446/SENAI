@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const ProdutoController = require("../controllers/produtoController");
+const upload = require("../config/multer");
 
 router.get("/", ProdutoController.listarProduto);
 router.get("/:id", ProdutoController.buscarProdutoPorId);
-router.post("/", ProdutoController.cadastrarProduto);
+router.post("/", upload.single("imagem"), ProdutoController.cadastrarProduto);
 router.put("/:id", ProdutoController.atualizarProduto);
 router.delete("/:id", ProdutoController.deletarProduto);
 
-module.xports = router;
+module.exports = router;

@@ -2,49 +2,61 @@ const pool = require("../config/database");
 
 class ProdutoRepository {
   async listarProdutos() {
-    const listaProdutos = await pool.query("SELECT * FROM produto");
+    const [listaProdutos] = await pool.query(
+  "SELECT * FROM produto"
+);
+
+console.log(listaProdutos);
+
     return listaProdutos;
   }
 
   async buscarProdutoPorId(id) {
-    const mostrarProduto = await pool.query(
-      "SELECT * FROM produto WHERE id = ?",
-      [id],
-    );
-    return mostrarProduto[0];
+    const [produto] = await pool.query("SELECT * FROM produto WHERE id = ?", [
+      id,
+    ]);
+
+    return produto;
   }
 
   async cadastrarProduto(dadosDoProduto) {
-    const resultadoCadastroDeProduto = await pool.query(
+    const [resultadoCadastroDeProduto] = await pool.query(
       "INSERT INTO produto SET ?",
       [dadosDoProduto],
     );
+
     return resultadoCadastroDeProduto.insertId;
   }
 
   async atualizarProduto(id, dadosDoProduto) {
     const camposProduto = [];
-    const values = [];
     const dadoProduto = [];
 
     for (const [key, value] of Object.entries(dadosDoProduto)) {
-      camposProduto.push("${key} = ?");
+      camposProduto.push(`${key} = ?`);
+
       dadoProduto.push(value);
     }
-    if (camposProduto.length === 0) return null;
+
+    if (camposProduto.length === 0) {
+      return null;
+    }
 
     dadoProduto.push(id);
 
-    const query =
-      "UPDATE produto SET ${camposProduto.join(" / ")} WHERE id = ?";
+    const query = `
+      UPDATE produto
+      SET ${camposProduto.join(", ")}
+      WHERE id = ?
+    `;
 
-    const resultado = await pool.query(query, dadoProduto);
+    const [resultado] = await pool.query(query, dadoProduto);
 
     return resultado.affectedRows;
   }
 
   async apagarProduto(id) {
-    await pool.query("DELETE * FROM produto WHERE id = ?", [id]);
+    await pool.query("DELETE FROM produto WHERE id = ?", [id]);
 
     return true;
   }
