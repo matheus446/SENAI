@@ -50,7 +50,7 @@ async function renderizarCardapio() {
     produtos.forEach(function (produto) {
       var card = document.createElement("article");
       card.classList.add("card");
-      card.setAttribute("data-id", produto.produto_id); // ID do banco
+      card.setAttribute("data-id", produto.id); // ID do banco
 
       card.innerHTML =
         "<img src='src/images/" +
