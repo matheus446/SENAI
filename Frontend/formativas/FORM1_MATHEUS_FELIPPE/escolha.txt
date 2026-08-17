@@ -1,0 +1,11 @@
+Eu escolho o Tailwind CSS.
+
+
+Escolhi o Tailwind porque achei mais fácil personalizar os elementos
+diretamente no HTML usando classes utilitárias. Ele permite controlar
+espaçamento, cores, tamanhos e responsividade de forma bem direta.
+
+
+O Bootstrap também é fácil de utilizar, principalmente por possuir
+componentes e classes prontas, mas achei o Tailwind mais flexível para
+criar diferentes estilos.
